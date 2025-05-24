@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+<div style="width: 75vw; margin: 0 auto 20px auto; display: flex; align-items: center; justify-content: space-between;">
+    <h1 style="margin: 0;">Fornecedores</h1>
+    <a href="{% url 'fornecedor-create' %}" class="btn-adicionar" style="text-align: center; display: inline-block;">Adicionar fornecedor</a>
+</div>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th class="acao">Ações</th>
+    </tr>
+    {% for fornecedor in fornecedores %}
+    <tr>
+        <td>{{ fornecedor.id }}</td>
+        <td>{{ fornecedor.nome }}</td>
+        <td class="acao">
+            <a href="{% url 'fornecedor-detail' fornecedor.id %}">Detalhes</a> |
+            <a href="{% url 'fornecedor-update' fornecedor.id %}">Editar</a> |
+            <a href="{% url 'fornecedor-delete' fornecedor.id %}">Excluir</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

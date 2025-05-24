@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+<div style="width: 75vw; margin: 0 auto 20px auto; display: flex; align-items: center; justify-content: space-between;">
+    <h1 style="margin: 0;">Estoque</h1>
+    <a href="{% url 'estoque-create' %}" class="btn-adicionar" style="text-align: center; display: inline-block;">Adicionar item ao estoque</a>
+</div>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Produto</th>
+        <th>Fornecedor</th>
+        <th>Data de Validade</th>
+        <th>Quantidade</th>
+        <th class="acao">Ações</th>
+    </tr>
+    {% for estoque in estoques %}
+    <tr>
+        <td>{{ estoque.id }}</td>
+        <td>{{ estoque.id_produto.nome }}</td>
+        <td>{{ estoque.id_fornecedor.nome }}</td>
+        <td>{{ estoque.data_validade }}</td>
+        <td>{{ estoque.quantidade }}</td>
+        <td class="acao">
+            <a href="{% url 'estoque-detail' estoque.id %}">Detalhes</a> |
+            <a href="{% url 'estoque-update' estoque.id %}">Editar</a> |
+            <a href="{% url 'estoque-delete' estoque.id %}">Excluir</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

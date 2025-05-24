@@ -8,10 +8,16 @@ class Produto(models.Model):
     fabricante = models.CharField(max_length=200, null=False, blank=False)
     marca = models.CharField(max_length=200, null=False, blank=False)
 
+    def __str__(self):
+        return self.nome
+
 
 class Fornecedor(models.Model):
     id = models.AutoField(primary_key=True)
     nome = models.CharField(max_length=200, null=False, blank=False)
+
+    def __str__(self):
+        return self.nome
 
 
 class Estoque(models.Model):

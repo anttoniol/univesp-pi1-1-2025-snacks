@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+<div style="width: 75vw; margin: 0 auto 20px auto; display: flex; align-items: center; justify-content: space-between;">
+    <h1 style="margin: 0;">Produtos</h1>
+    <a href="{% url 'produto-create' %}" class="btn-adicionar" style="text-align: center; display: inline-block;">Adicionar produto</a>
+</div>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Fabricante</th>
+        <th>Marca</th>
+        <th class="acao">Ações</th>
+    </tr>
+    {% for produto in produtos %}
+    <tr>
+        <td>{{ produto.id }}</td>
+        <td>{{ produto.nome }}</td>
+        <td>{{ produto.fabricante }}</td>
+        <td>{{ produto.marca }}</td>
+        <td class="acao">
+            <a href="{% url 'produto-detail' produto.id %}">Detalhes</a> |
+            <a href="{% url 'produto-update' produto.id %}">Editar</a> |
+            <a href="{% url 'produto-delete' produto.id %}">Excluir</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

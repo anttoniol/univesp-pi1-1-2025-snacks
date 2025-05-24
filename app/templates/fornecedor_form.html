@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+<div style="width: 75vw; margin: 0 auto 20px auto; display: flex; align-items: center; justify-content: space-between;">
+    <h1 style="margin: 0;">Fornecedores</h1>
+</div>
+<form method="post" style="width: 75vw; margin: 0 auto; display: flex; flex-direction: column; gap: 1.2em; align-items: center;">
+    {% csrf_token %}
+    {% for field in form.visible_fields %}
+        <div style="display: flex; flex-direction: column; align-items: flex-start; width: 100%;">
+            <label for="{{ field.id_for_label }}" style="margin-bottom: 4px; font-weight: 700;">{{ field.label }}</label>
+            <input type="{{ field.field.widget.input_type }}" name="{{ field.html_name }}" id="{{ field.id_for_label }}" value="{{ field.value|default_if_none:'' }}" class="form-campo" {% if field.field.required %}required{% endif %}>
+            {% if field.help_text %}<small style="color: #666;">{{ field.help_text }}</small>{% endif %}
+            {% for error in field.errors %}<div style="color: #dc3545; font-size: 0.95em;">{{ error }}</div>{% endfor %}
+        </div>
+    {% endfor %}
+    <div style="display: flex; justify-content: flex-start; gap: 10px; width: 100%;">
+        <button type="submit">Salvar</button>
+        <a href="{% url 'fornecedor-list' %}" style="text-decoration: none;"><button type="button" style="background: #6c757d;">Voltar à lista</button></a>
+    </div>
+</form>
+<style>
+.form-campo {
+    width: 100%;
+    min-width: 220px;
+    max-width: 100%;
+    font-size: 1.1em;
+    padding: 10px 12px;
+    box-sizing: border-box;
+}
+</style>
+{% endblock %}

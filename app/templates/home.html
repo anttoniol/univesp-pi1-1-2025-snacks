@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Bem-vindo ao Sistema de Estoque de Snacks!</h1>
+<p>Gerencie produtos, fornecedores e estoque de forma simples e eficiente.</p>
+<div style="margin-top: 40px; display: flex; gap: 32px; flex-wrap: wrap;">
+    <a href="/app/produtos/" style="flex: 1; min-width: 180px; background: #007bff; color: #fff; padding: 24px 0; border-radius: 8px; text-align: center; font-size: 1.2em; text-decoration: none; box-shadow: 0 2px 8px #0001; transition: background 0.2s;">Produtos</a>
+    <a href="/app/fornecedores/" style="flex: 1; min-width: 180px; background: #007bff; color: #fff; padding: 24px 0; border-radius: 8px; text-align: center; font-size: 1.2em; text-decoration: none; box-shadow: 0 2px 8px #0001; transition: background 0.2s;">Fornecedores</a>
+    <a href="/app/estoque/" style="flex: 1; min-width: 180px; background: #007bff; color: #fff; padding: 24px 0; border-radius: 8px; text-align: center; font-size: 1.2em; text-decoration: none; box-shadow: 0 2px 8px #0001; transition: background 0.2s;">Estoque</a>
+</div>
+{% endblock %}

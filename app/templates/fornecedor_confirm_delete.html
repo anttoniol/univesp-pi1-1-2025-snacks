@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+<div style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 60vh;">
+    <h1>Excluir Fornecedor</h1>
+    <p>Tem certeza que deseja excluir o fornecedor <strong>{{ fornecedor.nome }}</strong>?</p>
+    <form method="post" style="display: flex; gap: 10px;">
+        {% csrf_token %}
+        <button type="submit" class="btn-adicionar" style="background: #dc3545;">Confirmar exclusão</button>
+        <a href="{% url 'fornecedor-list' %}" style="text-decoration: none;"><button type="button" style="background: #6c757d; margin-left: 10px;">Cancelar</button></a>
+    </form>
+</div>
+{% endblock %}
